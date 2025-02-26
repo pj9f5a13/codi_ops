@@ -1,0 +1,30 @@
+services:
+  sRouter:
+    image: irouter:1.0
+    volumes:
+      - ./codi:/usr/local/apache2/htdocs
+    build: .
+    expose:
+      - "80"
+    environment:
+      - HOST_NAME=pj9f5a13-grup01.fjeclot.net
+    networks:
+      - red_pj9f5a13
+
+  sDc:
+    image: nginx:latest
+    container_name: cNginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - sRouter
+    ports:
+      - "0.0.0.0:80:80"
+    networks:
+      - red_pj9f5a13
+
+
+networks:
+  red_pj9f5a13:
+    name: pj9f5a13
+    driver: bridge
