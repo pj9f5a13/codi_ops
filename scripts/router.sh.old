@@ -1,0 +1,3 @@
+#!/bin/bash
+#Sincronizar
+scp -o StrictHostKeyChecking=no -r /var/lib/jenkins/workspace/router vagrant@192.168.1.74:/home/vagrant/pj9f5a13/codi

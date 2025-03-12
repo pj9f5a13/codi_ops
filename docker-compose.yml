@@ -2,7 +2,8 @@ services:
   sRouter:
     image: irouter:1.0
     volumes:
-      - ./codi:/usr/local/apache2/htdocs
+      - ./codi:/var/www/html
+#      - ./codi:/usr/local/apache2/htdocs
     build: .
     expose:
       - "80"
