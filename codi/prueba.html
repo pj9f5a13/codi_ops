@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuració Router CISCO</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); }
+        label, input, textarea { display: block; width: 100%; margin-bottom: 10px; }
+        input[type="text"], input[type="password"], input[type="datetime-local"] { padding: 8px; border: 1px solid #ccc; border-radius: 5px; }
+        input[type="submit"] { background: #28a745; color: white; padding: 10px; border: none; cursor: pointer; border-radius: 5px; }
+        input[type="submit"]:hover { background: #218838; }
+    </style>
+    <script>
+        function autoFill() {
+            let hostname = document.querySelector("input[name='hostname']").value;
+            if (hostname.toLowerCase() === "test") {
+                document.querySelector("input[name='enable_secret']").value = "cisco123";
+                document.querySelector("input[name='telnet_password']").value = "telnet123";
+                document.querySelector("input[name='console_password']").value = "console123";
+                document.querySelector("input[name='banner']").value = "Benvingut al Router";
+                document.querySelector("input[name='ip_f0_0']").value = "192.168.1.1";
+                document.querySelector("input[name='mask_f0_0']").value = "255.255.255.0";
+                document.querySelector("input[name='ip_f0_1']").value = "192.168.2.1";
+                document.querySelector("input[name='mask_f0_1']").value = "255.255.255.0";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Configuració inicial del Router CISCO 2811</h2>
+        <form action="prueba.php" method="post">
+            <label>Hostname: <input type="text" name="hostname" oninput="autoFill()" required></label>
+            <label>Contrasenya privilegiat: <input type="password" name="enable_secret" required></label>
+            <label>Contrasenya telnet: <input type="password" name="telnet_password" required></label>
+            <label>Contrasenya consola: <input type="password" name="console_password" required></label>
+            <label>Banner: <input type="text" name="banner" required></label>
+            <label>Data i hora: <input type="datetime-local" name="datetime" required></label>
+            <label>Enrutament activat? <input type="checkbox" name="routing"></label>
+            <label>IP FastEthernet0/0: <input type="text" name="ip_f0_0" required></label>
+            <label>Màscara: <input type="text" name="mask_f0_0" required></label>
+            <label>IP FastEthernet0/1: <input type="text" name="ip_f0_1" required></label>
+            <label>Màscara: <input type="text" name="mask_f0_1" required></label>
+            <input type="submit" value="Generar Configuració">
+        </form>
+    </div>
+</body>
+</html>
